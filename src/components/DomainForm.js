@@ -41,9 +41,6 @@ const DomainForm = ({ onResultsData }) => {
 
 	const handleChange = (evt) => {
 		const { name, value } = evt.target;
-		if (evt.target.value !== 3) {
-			console.log("error", evt.target.value);
-		}
 		setFormData({
 			...formData,
 			[name]: value,

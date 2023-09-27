@@ -54,7 +54,7 @@ const DomainForm = ({ onResultsData }) => {
 			<Box component="form" onSubmit={handleSubmit}>
 				<Stack direction="column" spacing={2}>
 					<TextField
-						label="Please enter the domain count, separated in commas"
+						label="Please enter the domain count, separated in commas ex: 3512, 340, 123"
 						name="domainCount"
 						variant="outlined"
 						value={formData.domainCount}
@@ -62,7 +62,7 @@ const DomainForm = ({ onResultsData }) => {
 						type="string"
 					/>
 					<TextField
-						label="Please enter the domain url string"
+						label="Please enter the domain url string ex: hello.world.com"
 						name="domainName"
 						variant="outlined"
 						value={formData.domainName}

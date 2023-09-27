@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import getSubdomainVisitCount from "./lib/getSubdomainVisitCount";
+import { Box, Button, Stack, TextField } from "@mui/material";
+import getSubdomainVisitCount from "../lib/getSubdomainVisitCount";
 
 // const cpdomains = [
 // 	"9001 discuss.websiteexample.com",
@@ -8,7 +8,7 @@ import getSubdomainVisitCount from "./lib/getSubdomainVisitCount";
 // 	"300 com",
 // ];
 
-const App = () => {
+const DomainForm = ({ onResultsData }) => {
 	const [formData, setFormData] = useState({
 		domainCount: "",
 		domainName: "",
@@ -41,62 +41,19 @@ const App = () => {
 
 	const handleChange = (evt) => {
 		const { name, value } = evt.target;
+		if (evt.target.value !== 3) {
+			console.log("error", evt.target.value);
+		}
 		setFormData({
 			...formData,
 			[name]: value,
 		});
 	};
 
-	const Panel = () => {
-		return (
-			<Stack
-				direction="row"
-				spacing={4}
-				justifyContent="center"
-				textAlign="center"
-				marginTop="20px"
-			>
-				{resultsData.map((result, idx) => (
-					<Box
-						key={idx}
-						border="1px solid gray"
-						padding={10}
-						width="100%"
-						borderRadius="5px"
-					>
-						<Typography variant="h2">{result.split(" ")[0]}</Typography>
-						<Typography variant="h3">{result.split(" ")[1]}</Typography>
-					</Box>
-				))}
-			</Stack>
-		);
-	};
-
-	const ArrayDisplay = () => {
-		return (
-			<Box>
-				<Typography
-					variant="h2"
-					sx={{ fontSize: "24px", margin: "40px auto 20px" }}
-				>
-					Display Array:
-				</Typography>
-				<code
-					style={{
-						backgroundColor: "gray",
-						padding: "15px",
-						borderRadius: "5px",
-						color: "#FFF",
-					}}
-				>
-					{JSON.stringify(resultsData)}
-				</code>
-			</Box>
-		);
-	};
+	console.log("resultsData", resultsData);
 
 	return (
-		<Stack sx={{ padding: "40px" }}>
+		<Stack sx={{ marginBottom: "40px" }}>
 			<Box component="form" onSubmit={handleSubmit}>
 				<Stack direction="column" spacing={2}>
 					<TextField
@@ -120,10 +77,9 @@ const App = () => {
 					</Button>
 				</Stack>
 			</Box>
-			<Stack>{submitted && <Panel />}</Stack>
-			<Stack>{submitted && <ArrayDisplay />}</Stack>
+			<Box>{submitted && <p>Hello</p>}</Box>
 		</Stack>
 	);
 };
 
-export default App;
+export default DomainForm;
